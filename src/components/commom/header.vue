@@ -1,0 +1,81 @@
+<template>
+    <div class="hello">
+        <!-- <mu-appbar class="title" title="我的游戏" >
+            <mu-icon-button icon="menu" slot="left" @click="toggle()"/>
+            <mu-icon-menu slot="right" icon="more_vert" :value="theme" @change="changeTheme">
+                <mu-menu-item title="LIGHT" value="light" />
+                <mu-menu-item title="CARBON" value="carbon" />
+                <mu-menu-item title="TEAL" value="teal" />
+            </mu-icon-menu>
+        </mu-appbar> -->
+        <mu-appbar style="width: 100%;" color="primary"  class="title" title="我的游戏">
+            
+            <mu-menu slot="left">
+                <mu-button icon flat>
+                    <mu-icon value="menu"></mu-icon>
+                </mu-button>
+                <mu-list slot="content">
+                    <mu-list-item button>
+                        <mu-list-item-content>
+                        <mu-list-item-title>Menu Item 1</mu-list-item-title>
+                        </mu-list-item-content>
+                    </mu-list-item>
+                    <mu-list-item button>
+                        <mu-list-item-content>
+                        <mu-list-item-title>Menu Item 2</mu-list-item-title>
+                        </mu-list-item-content>
+                    </mu-list-item>
+                </mu-list>
+            </mu-menu>    
+
+            <mu-menu slot="right">
+                <mu-button icon flat>
+                    <mu-icon value="more_vert"></mu-icon>
+                </mu-button>
+            </mu-menu>              
+        </mu-appbar>
+    </div>
+</template>
+<script>
+    import axios from 'axios'
+    export default {
+        name: 'hello',
+        data() {
+            return {
+                // theme: 'teal',
+                // themes: {
+                //     light,
+                //     carbon,
+                //     teal
+                // },
+                open: false,
+                docked: true
+            }
+        },
+        methods: {
+            // changeTheme(theme) {
+            //     this.theme = theme;
+            //     console.log(this.theme)
+            //     const styleEl = this.getThemeStyle()
+            //     styleEl.innerHTML = this.themes[theme] || ''
+            // },
+            // getThemeStyle() {
+            //     const themeId = 'muse-theme'
+            //     let styleEl = document.getElementById(themeId)
+            //     // console.log(styleEl)
+            //     if (styleEl) return styleEl
+            //     styleEl = document.createElement('style')
+            //     styleEl.id = themeId
+            //     document.body.appendChild(styleEl)
+            //     // console.log(styleEl)
+            //     return styleEl
+            // },
+        }
+    }
+</script>
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+.title{
+    text-align: center;
+}
+</style>
