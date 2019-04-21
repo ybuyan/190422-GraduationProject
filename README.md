@@ -1,42 +1,23 @@
-# Vue.js 
----  
 
-## 前言  
+# 190414-GraduationProject
+# 毕业设计--基于安卓的脑力锻炼及游戏系统
 
-基于 vue2.0 写的单页面应用 Vue.js 中文社区，感谢 Vue.js 中文社区提供的API。  
-
-( PC 端请切换至 Chrome 手机模式预览)  
-
-
-## 技术栈
-
-- vue2.0
-- vue-cli
-- vue-router
-- axios
-- muse-ui
-
-
-## 预览  
-
-![侧边栏](/img/1.png "侧边栏") ![主界面](/img/2.png "主界面") ![轮播图插件](/img/3.png "轮播图插件") ![百度地图](/img/4.png "百度地图插件")
-
-## 实现功能
-
-- [x] 首页列表
-- [x] 下拉加载
-- [x] 用户信息（点击头像）
-- [x] 主题内容
-- [x] 登录功能
-- [x] 发布主题（支持markdown格式）
-- [x] 个人中心
-- [x] 主题切换
-
-## 执行项目
-
-> 安装依赖  
-> npm install  
-> 启动服务  
-> npm run dev  
-> 运行  
-> localhost:8070/home  
+# 文件夹暂时设计
+img //图标，图片
+src
+|---assets 
+   |---js  //公共js库
+|---components
+   |---common //公共组件
+   |   |---bottom.vue //底部导航组件
+   |   |---header.vue //顶部title组件
+   |   |---tabs.vue   //主页的游戏分类组件，设计到游戏路由跳转
+   |   |---slide.vue  //发布中心的轮播图组件
+   |---home.vue   //主页组件，设计到路由
+   |---mine.vue   //我的组件，设计到路由
+   |---news.vue   //信息中心
+   |---publist.vue//发布中心
+|---css     //公共样式
+|---ruter   //路由管理
+|---App.vue //spa入口组件
+|---main.js  
