@@ -21,3 +21,8 @@ src
 |---ruter   //路由管理
 |---App.vue //spa入口组件
 |---main.js  
+
+# 运行方式
+1.clone项目
+2.npm install 
+3.npm run dev
