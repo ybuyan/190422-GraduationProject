@@ -4,7 +4,7 @@
             <mu-bottom-nav-item to="/home" value="主页" title="主页" icon="restore"/>
             <mu-bottom-nav-item to="/home/publish" value="发布" title="发布" icon="favorite"/>
             <mu-bottom-nav-item to="/home/news" value="消息" title="消息" icon="location_on"/>
-            <mu-bottom-nav-item to="/home/mine" value="我的" title="我的" icon="location_on"/>
+            <mu-bottom-nav-item to="/home/mine" value="我的" title="我的" icon="person"/>
         </mu-bottom-nav>
     </mu-paper>
 </template>

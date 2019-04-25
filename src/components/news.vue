@@ -1,6 +1,6 @@
 <template>
     <div class="wrapper">
-        <mu-appbar class="title news" title="信息中心" style="width: 100%;" color="primary"></mu-appbar>
+        <mu-appbar class="title news" z-depth="0" title="信息中心" style="width: 100%;" color="primary"></mu-appbar>
         <div style="position:relative;top:56px">
             组件
         </div>

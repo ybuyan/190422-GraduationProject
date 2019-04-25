@@ -2,12 +2,20 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 import home from "../components/home.vue"
-import mine from "../components/mine.vue";
-import news from "../components/news.vue";
-import publish from "../components/publist.vue";
+import mine from "../components/mine.vue"
+import news from "../components/news.vue"
+import publish from "../components/publist.vue"
 import homepage from "../components/homepage.vue"
 import content from "../components/content.vue"
-import user from "../components/user.vue"
+
+
+/**mine */
+import about from "../components/mine/about.vue"
+import accountInfo from "../components/mine/accountInfo.vue"
+import evaluatioAnalysis from "../components/mine/evaluatioAnalysis.vue"
+import login from "../components/mine/login.vue"
+import userInfo from "../components/mine/userInfo.vue"
+
 
 /**反应力游戏*/
 import feiji from "../components/game/reaction/AReaction/feiji.vue"
@@ -30,7 +38,13 @@ export default new Router({
     {
       path: '/home/mine',
       name: 'mine',
-      component: mine
+      component: mine,
+      // children:[
+      //   {
+      //     path:"/home/mine/login",
+      //     component:login
+      //   }
+      // ]
     },
     {
       path: '/home/news',
@@ -51,16 +65,40 @@ export default new Router({
       name:"content",
       component:content
     },
-    {
-      path:"/home/user",
-      name:"user",
-      component:user
-    },
+ 
     /**反应力游戏 */
     {
       path:"/feiji",
       name:"feiji",
       component:feiji
-    }
+    },
+    /**mine */
+    {
+      path:"/home/mine/userInfo",
+      name:userInfo,
+      component:userInfo
+    },
+    {
+      path:"/home/mine/evaluatioAnalysis",
+      name:evaluatioAnalysis,
+      component:evaluatioAnalysis
+    },
+    {
+      path:"/home/mine/accountInfo",
+      name:accountInfo,
+      component:accountInfo
+    },
+    {
+      path:"/home/mine/about",
+      name:about,
+      component:about
+    },
+    {
+      path:"/home/mine/login",
+      name:login,
+      component:login
+    },
+      
+    
   ]
 })
