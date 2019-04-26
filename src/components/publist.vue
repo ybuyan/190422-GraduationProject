@@ -1,6 +1,6 @@
 <template>
     <div class="wrapper">
-        <mu-appbar class="title" title="发布中心" style="width: 100%;" color="primary"></mu-appbar>
+        <mu-appbar class="title" z-depth="0" title="发布中心" style="width: 100%;" color="#fafafa" text-color="rgba(0, 0, 0, .54)"></mu-appbar>
         <!--<swipe class="my-swipe">
             <swipe-item class="slide1"></swipe-item>
             <swipe-item class="slide2"></swipe-item>

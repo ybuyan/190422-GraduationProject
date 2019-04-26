@@ -1,14 +1,6 @@
 <template>
     <div class="hello">
-        <!-- <mu-appbar class="title" title="我的游戏" >
-            <mu-icon-button icon="menu" slot="left" @click="toggle()"/>
-            <mu-icon-menu slot="right" icon="more_vert" :value="theme" @change="changeTheme">
-                <mu-menu-item title="LIGHT" value="light" />
-                <mu-menu-item title="CARBON" value="carbon" />
-                <mu-menu-item title="TEAL" value="teal" />
-            </mu-icon-menu>
-        </mu-appbar> -->
-        <mu-appbar style="width: 100%;" color="primary"  class="title" title="我的游戏">
+        <mu-appbar style="width: 100%;" z-depth="0" color="#fafafa"  class="title" title="我的游戏" text-color="rgba(0, 0, 0, .54)">
             
             <mu-menu slot="left">
                 <mu-button icon flat>

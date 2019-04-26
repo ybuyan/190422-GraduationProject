@@ -32,7 +32,7 @@
     }
     .tab {
         flex: 1;
-        margin: 3.8rem 0;
+        margin: 3.465rem 0;
     }
     .header {
         position: absolute;
