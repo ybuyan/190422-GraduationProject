@@ -1,6 +1,6 @@
 <template>
     <div class="userInfo">
-        <mu-appbar class="title news" style="width: 100%;" z-depth="0" color="primary">
+        <mu-appbar class="title news" style="width: 100%;" z-depth="0" color="#fafafa" text-color="rgba(0, 0, 0, .54)">
             <mu-button icon slot="left" to="/home/mine">
                 <mu-icon value="chevron_left" ></mu-icon>
             </mu-button>

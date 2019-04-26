@@ -1,6 +1,6 @@
 <template>
     <div class="hello">
-        <mu-appbar style="width: 100%;" z-depth="0" color="primary"  class="title" title="我的游戏">
+        <mu-appbar style="width: 100%;" z-depth="0" color="#fafafa"  class="title" title="我的游戏" text-color="rgba(0, 0, 0, .54)">
             
             <mu-menu slot="left">
                 <mu-button icon flat>

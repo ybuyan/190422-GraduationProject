@@ -1,6 +1,6 @@
 <template>
     <div class="wrapper">
-        <mu-appbar class="title news" z-depth="0" title="个人中心" style="width: 100%;" color="primary"></mu-appbar>
+        <mu-appbar class="title news" z-depth="0" title="个人中心" style="width: 100%;" color="#fafafa" text-color="rgba(0, 0, 0, .54)"></mu-appbar>
         <div id="user-info">     
             <mu-container style="padding: 16px 0;">         
                 <mu-row justify-content="center" buttoon to="/userInfo">
