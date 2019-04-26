@@ -16,7 +16,7 @@ import feiji from "../components/game/reaction/AReaction/feiji.vue"
 Vue.use(Router)
 
 export default new Router({
-  mode: 'history',
+//mode: 'history',
   routes: [
     {
       path:'/',
