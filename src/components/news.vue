@@ -2,7 +2,7 @@
     <div class="wrapper">
         <mu-appbar class="title news" z-depth="0" title="信息中心" style="width: 100%;" color="#fafafa" text-color="rgba(0, 0, 0, .54)"></mu-appbar>
         <div style="position:relative;top:56px">
-            组件
+            需修改，为全部的平均占比，全部用户平均写死
         </div>
         <BottomNavigation></BottomNavigation>
     </div>

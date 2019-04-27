@@ -2,6 +2,7 @@ var path = require('path')
 var utils = require('./utils')
 var config = require('../config')
 var vueLoaderConfig = require('./vue-loader.conf')
+var webpack = require("webpack");
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -22,9 +23,16 @@ module.exports = {
     extensions: ['.js', '.vue', '.json'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
-      '@': resolve('src')
+      '@': resolve('src'),
     }
   },
+  plugins: [// 3. 配置全局使用 jquery
+    new webpack.ProvidePlugin({
+    $: "jquery",
+    jQuery: "jquery",
+    jquery: "jquery",
+    "window.jQuery": "jquery"
+  })],
   module: {
     rules: [
       {
@@ -56,6 +64,11 @@ module.exports = {
       {
         test: /\.txt$/,
         use: 'raw-loader'
+      },
+      {
+        test: /\.js$/,
+        loader: 'babel-loader',
+        include: [resolve('src'), resolve('test'), resolve('node_modules/vue-echarts')]
       }
     ]
   }

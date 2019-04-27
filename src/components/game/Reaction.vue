@@ -21,25 +21,25 @@
         <mu-divider></mu-divider>
         <mu-list>
             <mu-sub-header>一般</mu-sub-header>
-            <mu-list-item avatar button :ripple="false">
+            <mu-list-item avatar button :ripple="false"  to="/xinsuan">
                 <mu-list-item-action>
                     <mu-avatar>
                         <img src="../../assets/logo.png">
                     </mu-avatar>
                 </mu-list-item-action>
-                <mu-list-item-title>记忆翻牌</mu-list-item-title>
+                <mu-list-item-title>心算测试</mu-list-item-title>
             </mu-list-item>
         </mu-list>
         <mu-divider></mu-divider>
         <mu-list>
             <mu-sub-header>困难</mu-sub-header>
-            <mu-list-item avatar button :ripple="false">
+            <mu-list-item avatar button :ripple="false" to="/baikuai">
                 <mu-list-item-action>
                     <mu-avatar>
                         <img src="../../assets/logo.png">
                     </mu-avatar>
                 </mu-list-item-action>
-                <mu-list-item-title>记忆翻牌</mu-list-item-title>
+                <mu-list-item-title>别踩白块儿</mu-list-item-title>
             </mu-list-item>
         </mu-list>
     </div>

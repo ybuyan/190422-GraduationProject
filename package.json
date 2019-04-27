@@ -15,6 +15,8 @@
   "dependencies": {
     "awe-dnd": "^0.3.0",
     "axios": "^0.16.1",
+    "echarts": "^4.2.1",
+    "jquery": "^3.4.0",
     "keycode": "^2.1.8",
     "marked": "^0.3.6",
     "muse-ui": "^3.0.2",
@@ -25,7 +27,8 @@
     "vue-infinite-scroll": "^2.0.1",
     "vue-router": "^2.3.1",
     "vue-swipe": "^2.0.3",
-    "vue-swiper": "^0.5.0"
+    "vue-swiper": "^0.5.0",
+    "zrender": "^4.0.7"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.2",
@@ -75,6 +78,8 @@
     "shelljs": "^0.7.6",
     "sinon": "^2.1.0",
     "sinon-chai": "^2.8.0",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.2",
     "url-loader": "^0.5.8",
     "vue-loader": "^11.3.4",
     "vue-style-loader": "^2.0.5",

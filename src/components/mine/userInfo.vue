@@ -27,28 +27,25 @@
                     </mu-list-item-action>
                 </mu-list-item>
                 <mu-bottom-sheet :open.sync="isSex">
-                    <mu-list @item-click="closeSex">
+                    <mu-list>
                         <mu-sub-header>请选择性别</mu-sub-header>
-                        <mu-list-item button>
-                            <mu-list-item-title>男</mu-list-item-title>
-                            <mu-list-item-action>
-                                <mu-radio :value="p" :label="p"></mu-radio>
-                            </mu-list-item-action> 
-                        </mu-list-item>
-                        <mu-list-item button>
-                            <mu-list-item-title>女</mu-list-item-title>
-                            <mu-list-item-action>
-                            <mu-icon value="check_circle" color="blue"></mu-icon>
-                            </mu-list-item-action>
-                        </mu-list-item>
+                        <mu-list-item>
+                            <mu-flex align-items="center" justify-content="center" :key="'radio ' + i" v-for="i in 2">
+                                <mu-list-item-title>{{i==1?"男":"女"}}</mu-list-item-title>
+                                <mu-list-item-action>
+                                    <mu-radio :value="i" v-model="changeSex.radio"></mu-radio>
+                                </mu-list-item-action>
+                            </mu-flex> 
+                        </mu-list-item>                  
                         <mu-flex justify-content="center" align-items="center">
-                            <mu-button flat>取消</mu-button>
-                            <mu-button flat>确定</mu-button>
+                            <mu-button flat  @click="closeSex">取消</mu-button>
+                            <mu-button flat  @click="submit_sex">确定</mu-button>
                         </mu-flex>   
                     </mu-list>
                 </mu-bottom-sheet>
             </mu-list>
             <mu-divider></mu-divider>
+
             <mu-list>
                 <mu-list-item avatar button @click="openAge" >
                     <mu-list-item-title>年龄</mu-list-item-title>
@@ -71,6 +68,7 @@
                     </mu-list>
                 </mu-bottom-sheet>
             </mu-list>
+            <mu-divider></mu-divider>
              <mu-list>
                 <mu-list-item avatar button @click="openStatus" >
                     <mu-list-item-title>状态</mu-list-item-title>
@@ -92,31 +90,25 @@
                     </mu-list>
                 </mu-bottom-sheet>
             </mu-list>
+            <mu-divider></mu-divider>
+
             <mu-list>
                 <mu-list-item avatar button @click="openIndustry" >
                     <mu-list-item-title>行业</mu-list-item-title>
                     <mu-list-item-action>
-                        {{industry}}
+                        {{indus}}
                     </mu-list-item-action>
                 </mu-list-item>
                 <mu-bottom-sheet :open.sync="isIndustry">
                     <mu-list @item-click="closeIndustry">
                         <mu-sub-header>行业</mu-sub-header>
-                        <mu-list-item button>
-                            <mu-list-item-title>男</mu-list-item-title>
-                            <mu-list-item-action>
-                                <mu-icon value="check_circle"></mu-icon>
-                            </mu-list-item-action> 
-                        </mu-list-item>
-                        <mu-list-item button>
-                            <mu-list-item-title>女</mu-list-item-title>
-                            <mu-list-item-action>
-                            <mu-icon value="check_circle" color="blue"></mu-icon>
-                            </mu-list-item-action>
-                        </mu-list-item>
+                        <mu-slide-picker :slots="industrySlots" 
+                                         :visible-item-count="3" 
+                                         @change="industryChange" 
+                                         :values="industry">
+                                         </mu-slide-picker>
                         <mu-flex justify-content="center" align-items="center">
-                            <mu-button flat>取消</mu-button>
-                            <mu-button flat>确定</mu-button>
+                            <mu-button flat @click="closeIndustry">确定</mu-button>
                         </mu-flex>    
                     </mu-list>
                 </mu-bottom-sheet>
@@ -127,21 +119,32 @@
 
 <script>
 const state = {'学生':'学生','工作':'工作','待业':'待业'}
-
+const industry = {'计算机':'计算机','工作':'工作','待业':'待业'}
 export default {
     name:"userInfo",
     data() {
         return {
+            changeSex: {
+                radio: 1, 
+            },
             username:"yuan",
             avatar:require("../../assets/photo.jpg"),
             sex:"请选择",
             age:"请选择",
-            industry:"请选择",
             date:undefined,
             isIndustry: false,
             isSex: false,
             isAge: false,
             isStatus:false,
+            industrySlots: [
+                {
+                width: '100%',
+                textAlign: 'center',
+                values: Object.keys(industry)
+                }
+            ],
+            industry:'计算机',
+            indus:"请选择",
             stateSlots: [
                 {
                 width: '100%',
@@ -154,6 +157,18 @@ export default {
         }
     },
     methods:{
+        //选择性别
+        submit_sex() {
+            console.log(this.changeSex.radio)
+            let newCR = this.changeSex.radio
+            if(newCR === 1){
+                this.sex = "男"
+            }else {
+                this.sex = "女"
+            }
+            this.closeSex();
+        },
+        //end
         /**状态选择 */
         status_submit() {
             this.closeStatus()
@@ -182,6 +197,7 @@ export default {
             return this.age;
         },
         //年龄计算结束
+        //状态选择
         stateChange (value, index) {
             switch (index) {
                 case 0:
@@ -192,6 +208,19 @@ export default {
             }
             this.state = [this.status]
         },
+        //结束
+        //行业选择
+        industryChange(value, index) {
+            switch (index) {
+                case 0:
+                this.indus = value
+                const arr = industry[value]
+                this.industrySlots[1].values = arr
+                this.indus = arr[0]
+            }
+            this.industry = [this.indus]
+        },
+        //结束
         closeSex () {
             this.isSex = false;
             
@@ -235,5 +264,12 @@ export default {
 }
 .demo-picker-container{
   width: 256px;
+}
+.demo-snackbar-radio {
+  margin: 8px 0;
+}
+
+.mu-item div{
+    margin:0 auto;
 }
 </style>

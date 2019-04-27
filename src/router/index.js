@@ -25,8 +25,8 @@ import Reaction from "../components/game/Reaction"
 import jiyifanpai from "../components/game/reaction/AReaction/jiyifanpai.vue"
 /**反应力游戏*/
 import baikuai from "../components/game/reaction/AReaction/baikuai.vue"
-
-
+import xinsuan from "../components/game/reaction/AReaction/xinsuan.vue"
+ 
 Vue.use(Router)
 
 export default new Router({
@@ -104,6 +104,11 @@ export default new Router({
       path:"/baikuai",
       name:"baikuai",
       component:baikuai
+    },
+    {
+      path:"/xinsuan",
+      name:"xinsuan",
+      component:xinsuan
     },
     /********游戏分类***********/
     {

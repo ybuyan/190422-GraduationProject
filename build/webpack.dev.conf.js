@@ -30,6 +30,9 @@ module.exports = merge(baseWebpackConfig, {
       template: 'index.html',
       inject: true
     }),
-    new FriendlyErrorsPlugin()
+    new FriendlyErrorsPlugin({
+      from: path.resolve(__dirname, '../assets'),
+      to: 'assets',
+    })
   ]
 })

@@ -12,7 +12,9 @@ import BaiduMap from 'vue-baidu-map';
 import silder from "./components/commom/slide.vue";
 
 import VueEmoji from "vue-emoji";
+import echarts from "echarts";
 
+Vue.prototype.$echarts = echarts;
 Vue.use(VueEmoji)
 // Vue.use(silder)
 //引用拖拽插件
