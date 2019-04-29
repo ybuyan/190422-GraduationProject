@@ -104,7 +104,7 @@
         @mousemove='listener($event)'
         >
          <a @click="go($event)" v-for="tag in tags" :key="tag.x">
-            <text :x='tag.x' :y='tag.y' :font-size='20 * (600/(600-tag.z))' :fill-opacity='((400+tag.z)/600)'>{{tag.text}}</text>
+            <text :x='tag.x' :y='tag.y' :font-size='30 * (600/(600-tag.z))' :fill-opacity='((400+tag.z)/600)'>{{tag.text}}</text>
          </a>
     </svg> 
    

@@ -7,7 +7,7 @@
         Palppy Bird
     </mu-appbar>
     
-	<iframe src="../../../../../static/falppybird/index.html" 
+	<iframe src="./static/falppybird/palppybird.html" 
 			width="100%"
 			height="100%" 
 			frameborder="0" 
