@@ -2,32 +2,53 @@
     <div class="wrapper">
         <mu-appbar class="title news" z-depth="0" title="信息中心" style="width: 100%;" color="#fafafa" text-color="rgba(0, 0, 0, .54)"></mu-appbar>
         <div style="position:relative;top:56px">
-            需修改，为全部的平均占比，全部用户平均写死
+            <mu-container>
+            <mu-list>
+                <mu-sub-header>完成度平均占比</mu-sub-header>
+                <mu-flex class="demo-linear-progress">
+                    <mu-list-item-title>计算力</mu-list-item-title>
+                    <mu-linear-progress mode="determinate" :value="90"  :size="15" color="green"></mu-linear-progress>
+                </mu-flex>
+                <mu-flex class="demo-linear-progress">
+                    <mu-list-item-title>反应力</mu-list-item-title>
+                    <mu-linear-progress mode="determinate" :value="90"  :size="15" color="green"></mu-linear-progress>
+                </mu-flex>
+                <mu-flex class="demo-linear-progress">
+                    <mu-list-item-title>专注力</mu-list-item-title>
+                    <mu-linear-progress mode="determinate" :value="90"  :size="15" color="green"></mu-linear-progress>
+                </mu-flex>
+                <mu-flex class="demo-linear-progress">
+                    <mu-list-item-title>逻辑力</mu-list-item-title>
+                    <mu-linear-progress mode="determinate" :value="90"  :size="15" color="green"></mu-linear-progress>
+                </mu-flex>
+                <mu-flex class="demo-linear-progress">
+                    <mu-list-item-title>记忆力</mu-list-item-title>
+                    <mu-linear-progress mode="determinate" :value="90"  :size="15" color="green"></mu-linear-progress>
+                </mu-flex>
+            </mu-list>
+        </mu-container>  
+        <div class="recommend">
+            <label for="">你的{{game}}相对其他能力较弱，我们追求平衡发展，所以推荐你玩以下游戏:</label>
         </div>
+        </div>
+        
         <BottomNavigation></BottomNavigation>
     </div>
 </template>
 <script>
     import BottomNavigation from './commom/bottom.vue'
-    // import tabs from './commom/tabs.vue'
     import axios from 'axios'
     export default {
         components: {
-            // isheader,
-            // tabs,
             BottomNavigation
         },
         data() {
             return {
-                msg: 'Welcome to Your Vue.js App',
-                center: {lng: 0, lat: 0}
+                game:"记忆力"
             }
         },
         methods:{
-             handler () {
-                this.lng = 116.404
-                this.lat = 39.915
-            }
+             
         }
     }
 </script>
@@ -42,4 +63,16 @@
         top:0;
         left:0;
     }
+   
+</style>
+<style scoped>
+.recommend{
+    margin:16px;
+}
+.demo-linear-progress {
+    margin: 16px 0;
+}
+.mu-item-title{
+    width: 24% !important;
+}
 </style>

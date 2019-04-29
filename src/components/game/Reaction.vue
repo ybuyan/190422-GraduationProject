@@ -33,13 +33,13 @@
         <mu-divider></mu-divider>
         <mu-list>
             <mu-sub-header>困难</mu-sub-header>
-            <mu-list-item avatar button :ripple="false" to="/baikuai">
+            <mu-list-item avatar button :ripple="false" to="/palppybird">
                 <mu-list-item-action>
                     <mu-avatar>
                         <img src="../../assets/logo.png">
                     </mu-avatar>
                 </mu-list-item-action>
-                <mu-list-item-title>别踩白块儿</mu-list-item-title>
+                <mu-list-item-title>坠落的小鸟</mu-list-item-title>
             </mu-list-item>
         </mu-list>
     </div>
