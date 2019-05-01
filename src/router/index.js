@@ -15,6 +15,10 @@ import evaluatioAnalysis from "../components/mine/evaluatioAnalysis.vue"
 import login from "../components/mine/login.vue"
 import userInfo from "../components/mine/userInfo.vue"
 
+/**About */
+import privacypolicy from "../components/About/privacypolicy.vue"
+import serviceagreement from "../components/About/serviceagreement.vue"
+
 /**个人能力测评 */
 import calculationpower from "../components/analysis/calculationpower.vue"
 import focuspower from "../components/analysis/focuspower.vue"
@@ -32,9 +36,17 @@ import Reaction from "../components/game/Reaction"
 /**记忆力游戏*/
 import jiyifanpai from "../components/game/reaction/AReaction/jiyifanpai.vue"
 /**反应力游戏*/
-import palppybird from "../components/game/reaction/AReaction/palppybird.vue"
 import xinsuan from "../components/game/reaction/AReaction/xinsuan.vue"
+
+import qingwachichong from "../components/game/reaction/BReaction/qingwachichong.vue"
+
+import palppybird from "../components/game/reaction/CReaction/palppybird.vue"
+import baikuai from "../components/game/reaction/CReaction/baikuai.vue"
+import changecolor from "../components/game/reaction/CReaction/changecolor.vue"
  
+/**逻辑力游戏 */
+import qingwa from "../components/game/logic/ALogic/qingwa.vue"
+
 Vue.use(Router)
 
 export default new Router({
@@ -141,6 +153,23 @@ export default new Router({
       name:"xinsuan",
       component:xinsuan
     },
+    {
+      path: "/baikuai",
+      component: baikuai
+    },
+    {
+      path:"/changecolor",
+      component:changecolor
+    },
+    {
+      path:"/qingwachichong",
+      component:qingwachichong
+    },
+    /**逻辑力游戏 */
+    {
+      path:"/qingwa",
+      component: qingwa
+    },
     /**个人能力测试 */
     {
       path:"/calculationpower",
@@ -163,5 +192,14 @@ export default new Router({
       component:reactionpower
     },
     /**个人能力测试end */
+    /**About */
+    {
+      path:'/privacypolicy',
+      component:privacypolicy
+    },
+    {
+      path:'/serviceagreement',
+      component:serviceagreement
+    }
   ]
 })

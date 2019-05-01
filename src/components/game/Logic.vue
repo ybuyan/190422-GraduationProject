@@ -9,13 +9,13 @@
         
         <mu-list>
             <mu-sub-header>简单</mu-sub-header>
-            <mu-list-item avatar button :ripple="false" to="/jiyifanpai">
+            <mu-list-item avatar button :ripple="false" to="/qingwa">
                 <mu-list-item-action>
                     <mu-avatar>
                         <img src="../../assets/logo.png">
                     </mu-avatar>
                 </mu-list-item-action>
-                <mu-list-item-title>记忆翻牌</mu-list-item-title>
+                <mu-list-item-title>青蛙过河</mu-list-item-title>
             </mu-list-item>
         </mu-list>
         <mu-divider></mu-divider>

@@ -35,14 +35,14 @@
                     </mu-list-item-action>
                 </mu-list-item>
                 <mu-divider></mu-divider>
-                <mu-list-item button to="#">
+                <mu-list-item button to="/serviceagreement">
                     <mu-list-item-title>服务协议</mu-list-item-title>
                     <mu-list-item-action>
                         <mu-icon value="chevron_right"></mu-icon>
                     </mu-list-item-action>
                 </mu-list-item>
                 <mu-divider></mu-divider>
-                <mu-list-item button to="#">
+                <mu-list-item button to="/privacypolicy">
                     <mu-list-item-title>隐私政策</mu-list-item-title>
                     <mu-list-item-action>
                         <mu-icon value="chevron_right"></mu-icon>
