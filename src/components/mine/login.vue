@@ -1,52 +1,4 @@
 <template>
-<!-- <div>
-    <mu-appbar class="title news" style="width: 100%;" z-depth="0" color="#fafafa" text-color="rgba(0, 0, 0, .54)">
-            <mu-button icon slot="left" to="/home/mine">
-                <mu-icon value="chevron_left" ></mu-icon>
-            </mu-button>
-    </mu-appbar>
-    <mu-container class="container">
-        <mu-tabs :value.sync="active" inverse color="secondary" text-color="rgba(0, 0, 0, .54)"  center>
-            <mu-tab>短信登陆</mu-tab>
-            <mu-tab>密码登录</mu-tab>
-        </mu-tabs>
-        <div class="demo-text" v-if="active === 0">
-            <mu-form ref="form" :model="validateForm1" class="mu-demo-form">
-                <mu-form-item label="手机号" help-text="" prop="username" :rules="usernameRules1">
-                    <mu-text-field v-model="validateForm1.username" prop="username"></mu-text-field>
-                </mu-form-item>
-                <mu-form-item label="验证码" prop="password" :rules="passwordRules1">
-                    <mu-text-field type="password" v-model="validateForm1.password" prop="password"></mu-text-field>
-                </mu-form-item>
-                <mu-form-item prop="isAgree11" :rules="argeeRules1">
-                    <section> 温馨提示：未注册硅谷外卖帐号的手机号，登录时将自动注册，且代表已同意</section>
-                    <mu-checkbox label="同意用户协议" v-model="validateForm1.isAgree1"></mu-checkbox>
-                </mu-form-item>
-                <mu-form-item style="margin:0 auto">
-                    <mu-button style="margin:0 auto" color="primary" @click="submit1">提交</mu-button>
-                    <mu-button style="margin:0 auto" @click="clear1">重置</mu-button>
-                </mu-form-item>
-            </mu-form>
-        </div>
-        <div class="demo-text" v-if="active === 1">
-            <mu-form ref="form" :model="validateForm" class="mu-demo-form">
-                <mu-form-item label="用户名" help-text="" prop="username" :rules="usernameRules">
-                    <mu-text-field v-model="validateForm.username" prop="username"></mu-text-field>
-                </mu-form-item>
-                <mu-form-item label="密码" prop="password" :rules="passwordRules">
-                    <mu-text-field type="password" v-model="validateForm.password" prop="password"></mu-text-field>
-                </mu-form-item>
-                <mu-form-item prop="isAgree" :rules="argeeRules">
-                    <mu-checkbox label="同意用户协议" v-model="validateForm.isAgree"></mu-checkbox>
-                </mu-form-item>
-                <mu-form-item>
-                    <mu-button style="margin:0 auto" color="primary" @click="submit">提交</mu-button>
-                    <mu-button style="margin:0 auto" @click="clear">重置</mu-button>
-                </mu-form-item>
-            </mu-form>
-        </div>
-    </mu-container>
-</div>     -->
  <section class="loginContainer">
      <mu-appbar class="title news" style="width: 100%;" z-depth="0" color="#fafafa" text-color="rgba(0, 0, 0, .54)">
         <mu-button icon slot="left" to="/home/mine">
@@ -57,32 +9,16 @@
       <div class="login_header">
         <h2 class="login_logo">用户登录</h2>
         <div class="login_header_title">
-          <a href="javascript:;" :class="{on: loginWay}" @click="loginWay=true">短信登录</a>
-          <a href="javascript:;" :class="{on: !loginWay}" @click="loginWay=false">密码登录</a>
+          <!-- <a href="javascript:;" :class="{on: loginWay}" @click="loginWay=true">短信登录</a> -->
+          <!-- <a href="javascript:;" :class="{on: !loginWay}" @click="loginWay=false">密码登录</a> -->
         </div>
       </div>
       <div class="login_content">
         <form @submit.prevent="login">
-          <div :class="{on: loginWay}">
-            <section class="login_message">
-              <input type="tel" maxlength="11" placeholder="手机号" v-model="phone">
-              <button :disabled="!rightPhone" class="get_verification"
-                      :class="{right_phone: rightPhone}" @click.prevent="getCode">
-                {{computeTime>0 ? `已发送(${computeTime}s)` : '获取验证码'}}
-              </button>
-            </section>
-            <section class="login_verification">
-              <input type="tel" maxlength="8" placeholder="验证码" v-model="code">
-            </section>
-            <section class="login_hint">
-              温馨提示：未注册硅谷外卖帐号的手机号，登录时将自动注册，且代表已同意
-              <a href="javascript:;">《用户服务协议》</a>
-            </section>
-          </div>
           <div :class="{on: !loginWay}">
             <section>
               <section class="login_message">
-                <input type="text" maxlength="11" placeholder="手机/邮箱/用户名" v-model="name">
+                <input type="text" maxlength="11" placeholder="手机号码" v-model="phone">
               </section>
               <section class="login_verification">
                 <input type="text" maxlength="8" placeholder="密码" v-if="showPwd" v-model="pwd">
@@ -92,14 +28,10 @@
                   <span class="switch_text">{{showPwd ? 'abc' : '...'}}</span>
                 </div>
               </section>
-              <section class="login_message">
-                <input type="text" maxlength="11" placeholder="验证码" v-model="captcha">
-                <img class="get_verification" src="http://localhost:4000/captcha" alt="captcha"
-                  @click="getCaptcha" ref="captcha">
-              </section>
             </section>
           </div>
-          <button class="login_submit">登录</button>
+          <button class="login_submit" @click="login_submit">登录</button>
+          <button class="login_submit" @click="registered_submit">注册</button>
         </form>
         <a href="javascript:;" class="about_us">关于我们</a>
       </div>
@@ -123,7 +55,6 @@ export default {
             alertShow: false, // 是否显示警告框
         }
     },
-    
     computed: {
       rightPhone () {
         return /^1\d{10}$/.test(this.phone)
@@ -131,6 +62,34 @@ export default {
     },
 
     methods: {
+      //注册页面
+      registered_submit() {
+        this.$router.push('/registered');
+      },
+      //图片验证
+      login_submit(){
+        console.log(this.phone)
+        // let id = this.$route.query.id
+        let apiUrl = this.$store.state.apiUrl+"user/login";
+        axios.post(apiUrl, {phoneNumber: this.phone, pw: this.pwd})
+            .then(res => {
+                console.log(res.data)
+                //登录失败,先不讨论
+                if (res.data == true) {
+                  //设置Vuex登录标志为true，默认userLogin为false
+                  this.$store.dispatch("setUser", true);
+                  //Vuex在用户刷新的时候userLogin会回到默认值false，所以我们需要用到HTML5储存
+                  //我们设置一个名为Flag，值为isLogin的字段，作用是如果Flag有值且为isLogin的时候，证明用户已经登录了。
+                  localStorage.setItem("Flag", "isLogin");
+                  localStorage.setItem("phone",this.phone)
+                  this.$router.push("/home");
+                  //登录成功
+                } else {
+                  //iViewUi的友好提示
+                  this.$Message.error("你的手机号码和密码填写错误，或者手机号尚未注册");
+                }
+            });
+      },
       // 异步获取短信验证码
       async getCode () {
         // 如果当前没有计时
@@ -237,68 +196,6 @@ export default {
         this.$refs.captcha.src = 'http://localhost:4000/captcha?time='+Date.now()
       }
     },
-    // data() {
-    //     return {
-    //         active: 0,
-    //         usernameRules: [
-    //             { validate: (val) => !!val, message: '必须填写用户名'},
-    //             { validate: (val) => val.length >= 3, message: '用户名长度大于3'}
-    //         ],
-    //         passwordRules: [
-    //             { validate: (val) => !!val, message: '必须填写密码'},
-    //             { validate: (val) => val.length >= 3 && val.length <= 10, message: '密码长度大于3小于10'}
-    //         ],
-    //         argeeRules: [{ validate: (val) => !!val, message: '必须同意用户协议'}],
-    //         validateForm: {
-    //             username: '',
-    //             password: '',
-    //             isAgree: false
-    //         },
-    //         //1111
-    //         usernameRules1: [
-    //             { validate: (val) => !!val, message: '必须填写用户名'},
-    //             { validate: (val) => val.length >= 3, message: '用户名长度大于3'}
-    //         ],
-    //         passwordRules1: [
-    //             { validate: (val) => !!val, message: '必须填写密码'},
-    //             { validate: (val) => val.length >= 3 && val.length <= 10, message: '密码长度大于3小于10'}
-    //         ],
-    //         argeeRules1: [{ validate: (val) => !!val, message: '必须同意用户协议'}],
-    //         validateForm1: {
-    //             username1: '',
-    //             password1: '',
-    //             isAgree1: false
-    //         }
-    //     }
-    // },
-    // methods:{
-    //         submit () {
-    //             this.$refs.form.validate().then((result) => {
-    //                 console.log('form valid: ', result)
-    //             });
-    //         },
-    //         clear () {
-    //             this.$refs.form.clear();
-    //             this.validateForm = {
-    //                 username: '',
-    //                 password: '',
-    //                 isAgree: false
-    //             };
-    //         },
-    //         submit1 () {
-    //             this.$refs.form.validate().then((result) => {
-    //                 console.log('form valid: ', result)
-    //             });
-    //         },
-    //         clear1 () {
-    //             this.$refs.form.clear();
-    //             this.validateForm1 = {
-    //                 username1: '',
-    //                 password1: '',
-    //                 isAgree1: false
-    //             };
-    //         }
-    // }
 }
 </script>
 

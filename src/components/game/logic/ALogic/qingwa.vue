@@ -48,6 +48,6 @@ export default {
 
 <style scoped>
 .main{
-	height: 36rem;
+	height: 90.5%;
 }
 </style>

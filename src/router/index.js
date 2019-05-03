@@ -14,6 +14,7 @@ import accountInfo from "../components/mine/accountInfo.vue"
 import evaluatioAnalysis from "../components/mine/evaluatioAnalysis.vue"
 import login from "../components/mine/login.vue"
 import userInfo from "../components/mine/userInfo.vue"
+import registered from "../components/mine/registered.vue"
 
 /**About */
 import privacypolicy from "../components/About/privacypolicy.vue"
@@ -39,10 +40,14 @@ import jiyifanpai from "../components/game/reaction/AReaction/jiyifanpai.vue"
 import xinsuan from "../components/game/reaction/AReaction/xinsuan.vue"
 
 import qingwachichong from "../components/game/reaction/BReaction/qingwachichong.vue"
+import bricklaying from "../components/game/reaction/BReaction/bricklaying.vue"
 
 import palppybird from "../components/game/reaction/CReaction/palppybird.vue"
 import baikuai from "../components/game/reaction/CReaction/baikuai.vue"
 import changecolor from "../components/game/reaction/CReaction/changecolor.vue"
+
+/**计算力游戏 */
+import ball from "../components/game/calculation/ACalculation/9ball.vue"
  
 /**逻辑力游戏 */
 import qingwa from "../components/game/logic/ALogic/qingwa.vue"
@@ -54,12 +59,15 @@ export default new Router({
   routes: [
     {
       path:'/',
-      redirect: '/home'
+      redirect: '/home/publish'
     },
     {
       path: '/home',
       name: 'home',
-      component: home
+      component: home,
+      meta: {
+        isLogin: true
+      },
     },
     {
       path: '/home/mine',
@@ -91,17 +99,26 @@ export default new Router({
     {
       path:"/home/mine/userInfo",
       name:userInfo,
-      component:userInfo
+      component:userInfo,
+      meta: {
+        isLogin: true
+      }
     },
     {
       path:"/home/mine/evaluatioAnalysis",
       name:evaluatioAnalysis,
-      component:evaluatioAnalysis
+      component:evaluatioAnalysis,
+      meta: {
+        isLogin: true
+      }
     },
     {
       path:"/home/mine/accountInfo",
       name:accountInfo,
-      component:accountInfo
+      component:accountInfo,
+      meta: {
+        isLogin: true
+      }
     },
     {
       path:"/home/mine/about",
@@ -111,9 +128,15 @@ export default new Router({
     {
       path:"/home/mine/login",
       name:login,
-      component:login
+      component:login,
+      meta: {
+        isLogin: false
+      }
     },
-    
+    {
+      path:"/registered",
+      component: registered
+    },
     /********游戏分类***********/
     {
       path:'/calculation',
@@ -144,6 +167,10 @@ export default new Router({
     },
     /**反应力游戏 */
     {
+      path:'/bricklaying',
+      component:bricklaying
+    },
+    {
       path:"/palppybird",
       name:"palppybird",
       component:palppybird
@@ -169,6 +196,11 @@ export default new Router({
     {
       path:"/qingwa",
       component: qingwa
+    },
+    /**计算力游戏 */
+    {
+      path:"/ball",
+      component:ball
     },
     /**个人能力测试 */
     {

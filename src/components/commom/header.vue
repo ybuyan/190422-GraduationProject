@@ -7,16 +7,12 @@
                     <mu-icon value="menu"></mu-icon>
                 </mu-button>
                 <mu-list slot="content">
-                    <mu-list-item button>
+                    <mu-list-item button @click="signout">
                         <mu-list-item-content>
-                        <mu-list-item-title>Menu Item 1</mu-list-item-title>
+                        <mu-list-item-title>登出</mu-list-item-title>
                         </mu-list-item-content>
                     </mu-list-item>
-                    <mu-list-item button>
-                        <mu-list-item-content>
-                        <mu-list-item-title>Menu Item 2</mu-list-item-title>
-                        </mu-list-item-content>
-                    </mu-list-item>
+                    
                 </mu-list>
             </mu-menu>    
 
@@ -62,6 +58,11 @@
             //     // console.log(styleEl)
             //     return styleEl
             // },
+            signout() {
+                //console.log(localStorage)
+                localStorage.removeItem("Flag");
+                this.$router.push("/home/mine/login")
+            }
         }
     }
 </script>

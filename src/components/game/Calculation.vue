@@ -4,18 +4,18 @@
             <mu-button icon slot="left" to="/home">
                 <mu-icon value="chevron_left" ></mu-icon>
             </mu-button>
-            反应力游戏
+            计算力游戏
         </mu-appbar>
         
         <mu-list>
             <mu-sub-header>简单</mu-sub-header>
-            <mu-list-item avatar button :ripple="false" to="/jiyifanpai">
+            <mu-list-item avatar button :ripple="false" to="/ball">
                 <mu-list-item-action>
                     <mu-avatar>
                         <img src="../../assets/logo.png">
                     </mu-avatar>
                 </mu-list-item-action>
-                <mu-list-item-title>记忆翻牌</mu-list-item-title>
+                <mu-list-item-title>九球连接</mu-list-item-title>
             </mu-list-item>
         </mu-list>
         <mu-divider></mu-divider>

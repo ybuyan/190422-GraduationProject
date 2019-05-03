@@ -29,6 +29,14 @@
                 </mu-list-item-action>
                 <mu-list-item-title>青蛙吃小虫</mu-list-item-title>
             </mu-list-item>
+            <mu-list-item avatar button :ripple="false"  to="/bricklaying">
+                <mu-list-item-action>
+                    <mu-avatar>
+                        <img src="../../assets/logo.png">
+                    </mu-avatar>
+                </mu-list-item-action>
+                <mu-list-item-title>砌墙</mu-list-item-title>
+            </mu-list-item>
         </mu-list>
         <mu-divider></mu-divider>
         <mu-list>

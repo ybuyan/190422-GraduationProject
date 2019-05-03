@@ -60,8 +60,11 @@
                 avatar: require("../assets/photo.jpg"),    
             }
         },
-         mounted () {
- 
+        mounted() {
+            console.log(localStorage)
+            if(localStorage.Flag){
+                $(".login").attr("disabled",'true')
+            }
         },
         methods:{
             toUserInfo(){

@@ -4,7 +4,7 @@
             <mu-button icon slot="left" to="/home">
                 <mu-icon value="chevron_left" ></mu-icon>
             </mu-button>
-            反应力游戏
+            记忆力游戏
         </mu-appbar>
         
         <mu-list>

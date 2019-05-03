@@ -103,7 +103,7 @@
         viewBox="0 0 400 400"
         @mousemove='listener($event)'
         >
-         <a @click="go($event)" v-for="tag in tags" :key="tag.x">
+         <a class="alink" @click="go($event)" v-for="tag in tags" :key="tag.x">
             <text :x='tag.x' :y='tag.y' :font-size='30 * (600/(600-tag.z))' :fill-opacity='((400+tag.z)/600)'>{{tag.text}}</text>
          </a>
     </svg> 
@@ -265,6 +265,10 @@
 }
 .demo-text p {
     margin: 8px 0;
+}
+
+.alink{
+    text-decoration: none !important;
 }
 
 </style>

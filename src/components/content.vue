@@ -44,5 +44,5 @@
     }
 </script>
 <style>
-    @import "../css/index.css"
+    @import "../css/index.css";
 </style>

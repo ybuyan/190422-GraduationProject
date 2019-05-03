@@ -16,6 +16,9 @@ export default {
 html{
   font-size: 16px;
 }
+html,body,#app{
+  height: 100%;
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -41,7 +44,14 @@ html{
 .fade-enter-active, .fade-leave-active {
     transition: opacity 0.5s
     }
-    .fade-enter, .fade-leave-active {
-    opacity: 0
-    }
+.fade-enter, .fade-leave-active {
+  opacity: 0
+}
+  
+a:link,a:active,a:visited{
+  text-decoration:none !important;
+} 
+
+
+
 </style>
