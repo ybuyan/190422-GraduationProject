@@ -9,42 +9,7 @@
         <mu-container>
             <mu-list>
                 <mu-sub-header>简单</mu-sub-header>
-                <mu-divider></mu-divider>
-                <mu-flex class="demo-linear-progress">
-                    <mu-list-item-title>心算</mu-list-item-title>
-                    <mu-linear-progress mode="determinate" :value="90"  :size="15" color="green"></mu-linear-progress>
-                </mu-flex>
-                <mu-flex class="demo-linear-progress">
-                    <mu-list-item-title>小鸟起飞</mu-list-item-title>
-                    <mu-linear-progress mode="determinate" :value="90"  :size="15" color="green"></mu-linear-progress>
-                </mu-flex>
-                <mu-flex class="demo-linear-progress">
-                    <mu-list-item-title>输个蓝记忆翻牌</mu-list-item-title>
-                    <mu-linear-progress mode="determinate" :value="90"  :size="15" color="green"></mu-linear-progress>
-                </mu-flex>
-                <mu-flex class="demo-linear-progress">
-                    <mu-list-item-title>心算</mu-list-item-title>
-                    <mu-linear-progress mode="determinate" :value="90"  :size="15" color="green"></mu-linear-progress>
-                </mu-flex>
-            </mu-list>
-            <mu-divider></mu-divider>
-            <mu-list>
-                <mu-sub-header>一般</mu-sub-header>
-                <mu-divider></mu-divider>
-                <mu-flex class="demo-linear-progress">
-                    <mu-list-item-title>心算</mu-list-item-title>
-                    <mu-linear-progress mode="determinate" :value="90"  :size="15" color="green"></mu-linear-progress>
-                </mu-flex>
-                
-            </mu-list>
-            <mu-divider></mu-divider>
-            <mu-list>
-                <mu-sub-header>困难</mu-sub-header>
-                <mu-divider></mu-divider>
-                <mu-flex class="demo-linear-progress">
-                    <mu-list-item-title>心算</mu-list-item-title>
-                    <mu-linear-progress mode="determinate" :value="90"  :size="15" color="green"></mu-linear-progress>
-                </mu-flex>
+                <div id="myChart" :style="{width: '300px', height: '300px'}"></div>
             </mu-list>
         </mu-container>    
     </div>
@@ -59,6 +24,29 @@ export default {
    },
    components:{
    
+   },
+   mounted(){
+       this.drawLine();
+   },
+   methods:{
+       drawLine(){
+        // 基于准备好的dom，初始化echarts实例
+        let myChart = this.$echarts.init(document.getElementById('myChart'))
+        // 绘制图表
+        myChart.setOption({
+            title: { text: '困难' },
+            tooltip: {},
+            xAxis: {
+                data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
+            },
+            yAxis: {},
+            series: [{
+                name: '销量',
+                type: 'bar',
+                data: [5, 20, 36, 10, 10, 20]
+            }]
+        });
+       }
    }
        
 }

@@ -13,10 +13,10 @@
     "test": "npm run unit && npm run e2e"
   },
   "dependencies": {
+    "@antv/f2": "^3.3.9",
     "awe-dnd": "^0.3.0",
     "axios": "^0.16.1",
     "bootstrap": "^4.3.1",
-    "echarts": "^4.2.1",
     "iview": "^3.4.1",
     "jquery": "^3.4.0",
     "keycode": "^2.1.8",
@@ -24,6 +24,7 @@
     "muse-ui": "^3.0.2",
     "timeago.js": "^3.0.1",
     "vue": "^2.2.6",
+    "vue-awesome-mui": "^1.7.3",
     "vue-baidu-map": "^0.10.5",
     "vue-emoji": "0.0.2",
     "vue-infinite-scroll": "^2.0.1",

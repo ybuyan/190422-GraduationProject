@@ -1,18 +1,19 @@
 <template>
     <div class="wrapper">
-        <isheader class="header"></isheader>
+        <!-- <isheader class="header"></isheader> -->
+        <mu-appbar style="width: 100%;" z-depth="0" color="#fafafa"  class="title" title="我的游戏" text-color="rgba(0, 0, 0, .54)">      
+        </mu-appbar>
         <tabs class="tab"></tabs>
         <BottomNavigation></BottomNavigation>
     </div>
 </template>
 <script>
-    import isheader from './commom/header.vue'
+    // import isheader from './commom/header.vue'
     import BottomNavigation from './commom/bottom.vue'
     import tabs from './commom/tabs.vue'
     import axios from 'axios'
     export default {
         components: {
-            isheader,
             tabs,
             BottomNavigation
         },
@@ -28,11 +29,11 @@
         position: relative;
         display: flex;
         flex-direction: column;
-        height: 100vh;
+        height: 100%;
     }
     .tab {
         flex: 1;
-        margin: 3.465rem 0;
+        position: absolute;
     }
     .header {
         position: absolute;

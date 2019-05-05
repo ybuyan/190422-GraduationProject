@@ -19,7 +19,14 @@ import Vuex from 'vuex'
 import store from './vuex/store'
 import iView from 'iview';
 import 'iview/dist/styles/iview.css';
+import Mui from "vue-awesome-mui";
+import 'vue-awesome-mui/mui/dist/css/mui.css'
+import directives from '@/directives'//头像
+import F2 from '@antv/f2/lib/index'
 
+Vue.prototype.$F2= F2;
+directives(Vue)
+Vue.use(Mui)
 Vue.use(router)
 Vue.use(Vuex)
 window.axios = require('axios');
@@ -86,6 +93,34 @@ router.afterEach(route => {
   window.scroll(0, 0);
 });
 
+//监听手机后退键
+mui.init({
+    swipeBack: false, //关闭右滑关闭功能（默认就是false）
+    keyEventBind: {
+      backbutton: true //开启back按键监听（默认就是true）
+    }
+  });
+  var quitTime = null;
+  mui.plusReady(function(){
+    mui.back = function(){
+      //首次按键，提示‘再按一次退出应用’
+      if (!quitTime) {
+        //记录第一次按下回退键的时间
+        quitTime = new Date().getTime();
+        //回退到上一页面
+        window.history.go(-1);
+        setTimeout(function() {
+          //1s中后清除
+          quitTime = null;
+        }, 1000);
+      }else{
+        if((new Date().getTime() - quitTime) < 1000){
+          quitTime = null;
+          plus.runtime.quit();
+        }
+      }
+    };
+  });
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
