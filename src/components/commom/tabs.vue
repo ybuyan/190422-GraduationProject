@@ -1,4 +1,5 @@
 <template>
+   <!--菜单方式，浮动球 -->
     <!-- <div class="main"> -->
         <!-- tabs -->
         <!-- <mu-tabs
@@ -129,7 +130,7 @@
                 <mu-flex justify-content="center">
                     <mu-paper :z-depth="1">
                     <mu-grid-list class="gridlist-demo" >
-                        <mu-grid-tile v-for="tile,index in list1" 
+                        <mu-grid-tile v-for="(tile,index) in list1" 
                                       :key="index"
                                       button
                                       @click="go(index)">
@@ -138,7 +139,12 @@
                             <span slot="title">{{tile.title}}</span>
                             
                         </mu-grid-tile>
+                        <mu-grid-tile>
+                            <img src="../../assets/img/gameClass/slh.jpg" />
+                            <span slot="title">待开发</span>
+                        </mu-grid-tile>
                     </mu-grid-list>
+                    
                     </mu-paper>
                 </mu-flex>
                 </mu-container>
@@ -179,18 +185,6 @@
                 }]
                
             }
-        },
-        created() {
-        
-        },
-        computed:{
-       
-        },
-        mounted:function() {
-           
-        },
-        filters: {
-      
         },
         methods: {
        

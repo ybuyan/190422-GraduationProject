@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-  <transition name="fade"> 
+  <!-- <transition name="fade">  -->
     <router-view></router-view>
-  </transition>
+  <!-- </transition> -->
   </div>
 </template>
 
@@ -16,6 +16,12 @@ export default {
 <style>
 html{
   font-size: 16px;
+  font-weight: bold;
+}
+body{
+  /* background: url("./assets/bg/background.jpg") 50% 0 no-repeat; */
+  /* background-attachment:fixed; */
+  opacity: 0.8;
 }
 html,body,#app{
   height: 100%;
@@ -24,10 +30,7 @@ html,body,#app{
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #fafafa !important;
-  /*text-align: center;*/
-  /*color: #2c3e50;*/
-  /*margin-top: 60px;*/
+  /* background-color: black !important; */
 }
 
 ::-webkit-scrollbar {

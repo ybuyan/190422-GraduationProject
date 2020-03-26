@@ -1,9 +1,9 @@
 <template>
     <mu-paper class="bottomBar">
         <mu-bottom-nav :value="bottomNav" @change="handleChange">
+            <mu-bottom-nav-item to="/home/publish" value="发布" title="发布" icon="import_contacts"/>
             <mu-bottom-nav-item to="/home" value="主页" title="训练" icon="restore"/>
-            <mu-bottom-nav-item to="/home/publish" value="发布" title="发布" icon="favorite"/>
-            <mu-bottom-nav-item to="/home/news" value="消息" title="测评" icon="location_on"/>
+            <mu-bottom-nav-item to="/home/news" value="消息" title="测评" icon="trending_up"/>
             <mu-bottom-nav-item to="/home/mine" value="我的" title="我的" icon="person"/>
         </mu-bottom-nav>
     </mu-paper>
@@ -55,10 +55,9 @@
 <style>
     .bottomBar{
         position:fixed;
-        height:5rem;
+        height:3.5rem;
         width:100%;
         bottom:0;
         left:0;
-        background:red;
     }
 </style>

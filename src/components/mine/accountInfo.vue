@@ -7,14 +7,14 @@
             账户
         </mu-appbar>
         <mu-paper class="demo-paper" :z-depth="0">
-             <mu-list>
+             <mu-list >
                 <mu-sub-header>余额账户(元)</mu-sub-header>
                 <mu-list-item-action>
                     <span style="font-size:30px;padding:20px">{{balance}}</span>
                 </mu-list-item-action>
             </mu-list>
             <mu-list>
-                <mu-list-item avatar button to="# ">
+                <mu-list-item avatar button to="/recharge">
                     <mu-list-item-action>
                         <mu-avatar color="#fafafa">
                             <img src="../../assets/img/yue.png">
@@ -25,8 +25,8 @@
                         <mu-icon value="chevron_right"></mu-icon>
                     </mu-list-item-action>
                 </mu-list-item>
-                <mu-divider></mu-divider>
-                <mu-list-item avatar button to="#">
+                <!-- <mu-divider></mu-divider> -->
+                <!-- <mu-list-item avatar button to="#">
                     <mu-list-item-action>
                         <mu-avatar color="#fafafa">
                             <img src="../../assets/img/tixian.png">
@@ -37,7 +37,7 @@
                         <mu-icon value="chevron_right"></mu-icon>
                     </mu-list-item-action>
                 </mu-list-item>
-                <mu-divider></mu-divider>
+                <mu-divider></mu-divider> -->
             </mu-list>
         </mu-paper>
 
@@ -48,8 +48,22 @@
 export default {
     data() {
         return {
-            balance:"22.22"
+            balance:""
         }
+    },
+    mounted(){
+        let phone = localStorage.getItem("phone")
+        let apiUrl = this.$store.state.apiUrl+"user/checkBalance";
+        axios({
+            method: "post",
+            url: apiUrl,
+            data:{
+                phoneNumber: phone
+            }
+            }).then(res => {
+                console.log(res.data)
+                this.balance = res.data;
+        })
     }
 }
 </script>

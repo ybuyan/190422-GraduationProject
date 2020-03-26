@@ -1,7 +1,4 @@
-/**
- * Created by kimmy on 2017/5/13.
- * 鼠标点击外部事件，用于收起下拉框等操作，示例： v-myclickoutside = 'handler'
- */
+
 
 export default {
   install (Vue) {

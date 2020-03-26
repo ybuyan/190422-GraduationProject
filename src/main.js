@@ -9,7 +9,7 @@ import 'muse-ui/dist/muse-ui.css'
 // import 'muse-ui/dist/theme-teal.css'
 import scroll from 'vue-infinite-scroll';
 // import BaiduMap from 'vue-baidu-map';
-import silder from "./components/commom/slide.vue";
+
 
 import VueEmoji from "vue-emoji";
 import echarts from "echarts";
@@ -32,22 +32,17 @@ Vue.use(Vuex)
 window.axios = require('axios');
 Vue.prototype.$echarts = echarts;
 Vue.use(VueEmoji)
-// Vue.use(silder)
-//引用拖拽插件
+
 import VueDND from 'awe-dnd';
 Vue.use(VueDND);
 Vue.use(MuseUI);
 Vue.use(scroll);
 
-// Vue.use(BaiduMap, {
-//   // ak 是在百度地图开发者平台申请的密钥 详见 http://lbsyun.baidu.com/apiconsole/key */
-//   ak: 'ZZunCHGz66gcNItI8ILT6j2AI6EjTBhK'
-// })
 Vue.config.productionTip = false
 
 Vue.use(iView);
 
-// The routing configuration
+
 /**登陆状态验证 */
 router.beforeEach((to, from, next) => {
 
@@ -78,7 +73,6 @@ router.beforeEach((to, from, next) => {
       next({
         path: '/home/mine/login',
       })
-      //iViewUi友好提示
       iView.Message.info('请先登录')
     //用户进入无需登录的界面，则跳转继续
     }else{
@@ -112,9 +106,9 @@ mui.init({
         setTimeout(function() {
           //1s中后清除
           quitTime = null;
-        }, 1000);
+        }, 500);
       }else{
-        if((new Date().getTime() - quitTime) < 1000){
+        if((new Date().getTime() - quitTime) < 2000){
           quitTime = null;
           plus.runtime.quit();
         }
@@ -129,3 +123,4 @@ new Vue({
   template: '<App/>',
   components: { App }
 })
+//5419

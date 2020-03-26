@@ -15,6 +15,7 @@ import evaluatioAnalysis from "../components/mine/evaluatioAnalysis.vue"
 import login from "../components/mine/login.vue"
 import userInfo from "../components/mine/userInfo.vue"
 import registered from "../components/mine/registered.vue"
+import openVIP from "../components/mine/openVIP.vue"
 
 /**About */
 import privacypolicy from "../components/About/privacypolicy.vue"
@@ -34,23 +35,33 @@ import Logic from "../components/game/Logic"
 import Memory from "../components/game/Memory"
 import Reaction from "../components/game/Reaction"
 
+/**账户 */
+import recharge from "../components/account/recharge.vue"
+
+/**专注力游戏*/
+import zuiqiangyanli from "../components/game/focus/zuiqiangyanli.vue"
+import wazhongzhaomei from "../components/game/focus/wazhongmei.vue"
+
 /**记忆力游戏*/
-import jiyifanpai from "../components/game/reaction/AReaction/jiyifanpai.vue"
+import xygsz from "../components/game/memory/xygsz.vue"
+
 /**反应力游戏*/
-import xinsuan from "../components/game/reaction/AReaction/xinsuan.vue"
-
+import sqs from "../components/game/reaction/AReaction/sqs.vue"
 import qingwachichong from "../components/game/reaction/BReaction/qingwachichong.vue"
-import bricklaying from "../components/game/reaction/BReaction/bricklaying.vue"
-
 import palppybird from "../components/game/reaction/CReaction/palppybird.vue"
 import baikuai from "../components/game/reaction/CReaction/baikuai.vue"
-import changecolor from "../components/game/reaction/CReaction/changecolor.vue"
+import zqdzjs from "../components/game/reaction/BReaction/zqdzjs.vue"
+import zfj from "../components/game/reaction/BReaction/zfj.vue"
+import xxoo from "../components/game/reaction/AReaction/xxoo.vue"
+import symh from "../components/game/reaction/CReaction/symh.vue"
 
 /**计算力游戏 */
-import ball from "../components/game/calculation/ACalculation/9ball.vue"
+import xinsuan from "../components/game/reaction/AReaction/xinsuan.vue"
  
 /**逻辑力游戏 */
 import qingwa from "../components/game/logic/ALogic/qingwa.vue"
+import szcg from "../components/game/logic/ALogic/szcg.vue"
+import qqppp from "../components/game/logic/ALogic/qqppp.vue"
 
 Vue.use(Router)
 
@@ -77,7 +88,10 @@ export default new Router({
     {
       path: '/home/news',
       name: 'news',
-      component: news
+      component: news,
+      meta: {
+        isLogin: true
+      },
     },
     {
       path: '/home/publish',
@@ -135,7 +149,20 @@ export default new Router({
     },
     {
       path:"/registered",
-      component: registered
+      component: registered,
+      
+    },
+    {
+      path:"/home/mine/openVIP",
+      component:openVIP,
+      meta: {
+        isLogin: true
+      },
+    },
+    /********账户***************/
+    {
+      path:"/recharge",
+      component:recharge
     },
     /********游戏分类***********/
     {
@@ -159,48 +186,73 @@ export default new Router({
       component:Reaction
     },
     /********游戏分类end***********/
+    /**专注力游戏 */
+    {
+      path:"/zuiqiangyanli",
+      component:zuiqiangyanli
+    },
+    {
+      path:"/wazhongzhaomei",
+      component:wazhongzhaomei
+    },
      /**记忆力游戏 */
-     {
-      path:"/jiyifanpai",
-      name:"jiyifanpai",
-      component:jiyifanpai
+    {
+      path:"/xygsz",
+      component:xygsz
     },
     /**反应力游戏 */
     {
-      path:'/bricklaying',
-      component:bricklaying
+      path:"/sqs",
+      component:sqs
     },
     {
       path:"/palppybird",
       name:"palppybird",
       component:palppybird
     },
-    {
-      path:"/xinsuan",
-      name:"xinsuan",
-      component:xinsuan
-    },
+    
     {
       path: "/baikuai",
       component: baikuai
     },
     {
-      path:"/changecolor",
-      component:changecolor
-    },
-    {
       path:"/qingwachichong",
       component:qingwachichong
+    },
+    {
+      path:"/zqdzjs",
+      component:zqdzjs
+    },
+    {
+      path:"/zfj",
+      component:zfj
+    },
+    {
+      path:"/xxoo",
+      component:xxoo
+    },
+    {
+      path:"/symh",
+      component:symh
     },
     /**逻辑力游戏 */
     {
       path:"/qingwa",
       component: qingwa
     },
+    {
+      path:"/szcg",
+      component: szcg
+    },
+    {
+      path:"/qqppp",
+      component: qqppp
+    },
     /**计算力游戏 */
     {
-      path:"/ball",
-      component:ball
+      path:"/xinsuan",
+      name:"xinsuan",
+      component:xinsuan
     },
     /**个人能力测试 */
     {

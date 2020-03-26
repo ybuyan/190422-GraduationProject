@@ -1,11 +1,11 @@
 <template>
     <div class="main">
-        <mu-appbar style="width: 100%;" z-depth="0" color="#fafafa" text-color="rgba(0, 0, 0, .54)">
+        <!-- <mu-appbar style="width: 100%;" z-depth="0" color="#fafafa" text-color="rgba(0, 0, 0, .54)">
         <mu-button icon slot="left" to="/reaction">
             <mu-icon value="chevron_left" ></mu-icon>
         </mu-button>
             飞机大战
-        </mu-appbar>
+        </mu-appbar> -->
         
         <iframe src="./static/qingwachichong/index.html" 
                 width="100%"
@@ -21,9 +21,35 @@
 export default {
     data() {
 		return {
-			score:""
+			score:"",
+			gamename:"青蛙吃小虫"
 		}
 	},
+	watch:{  
+		score : function(newValue, oldValue){  
+			// this.updatedScore();
+			console.log(newValue)  
+			let phone = localStorage.getItem("phone");
+			let score = newValue
+			let apiUrl = this.$store.state.apiUrl+"game/updateReaction";
+			axios({
+				method:"post",
+				url:apiUrl,
+				data:{
+					phoneNumber: phone,
+					gamename: this.gamename,
+					highscore: score
+				}
+			}).then(res => {
+				console.log(res.data)
+				if(res.data == false){
+					this.$Message.info("继续加油，去超越你自己吧！！")
+				}else{
+					this.$Message.info("Congratulation，已超越你自己！！")
+				}
+			})
+		}
+	},  
 	methods:{
 		 receiveMessageFromIframePage (event) {
 			//console.log('receiveMessageFromIframePage', event.data)
@@ -45,6 +71,6 @@ export default {
 
 <style scoped>
 .main{
-	height: 90.5%;
+	height: 100%;
 }
 </style>

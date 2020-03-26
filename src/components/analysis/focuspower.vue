@@ -4,49 +4,93 @@
             <mu-button icon slot="left" to="/home/mine/evaluatioAnalysis">
                 <mu-icon value="chevron_left" ></mu-icon>
             </mu-button>
-            calculation power
+            focus power
         </mu-appbar>
         <mu-container>
             <mu-list>
-                <mu-sub-header>简单</mu-sub-header>
-                <div id="myChart" :style="{width: '300px', height: '300px'}"></div>
+                <mu-sub-header>focus</mu-sub-header>
+                <div class="chart-wrapper">
+                    <canvas id="mountNode"></canvas>
+                </div>
             </mu-list>
-        </mu-container>    
+        </mu-container> 
     </div>
 </template>
 
 <script>
+
 export default {
    data() {
        return {
-
+           phone: localStorage.getItem("phone"),
+           data:JSON.parse(localStorage.getItem("focusData"))
        }
    },
-   components:{
-   
-   },
+ 
    mounted(){
-       this.drawLine();
-   },
-   methods:{
-       drawLine(){
-        // 基于准备好的dom，初始化echarts实例
-        let myChart = this.$echarts.init(document.getElementById('myChart'))
-        // 绘制图表
-        myChart.setOption({
-            title: { text: '困难' },
-            tooltip: {},
-            xAxis: {
-                data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
-            },
-            yAxis: {},
-            series: [{
-                name: '销量',
-                type: 'bar',
-                data: [5, 20, 36, 10, 10, 20]
-            }]
+        this.getScore();
+        var v = this;
+        this.$nextTick(()=>{
+            v.drawFocusChart();
         });
-       }
+  
+   },
+   methods: {
+        getScore() {
+           let apiUrl = this.$store.state.apiUrl+"game/findFocusResult";
+           axios({
+               method: "post",
+               url: apiUrl,
+               data:{
+                   phoneNumber: this.phone,
+               }
+           }).then(res => {
+
+               let focusData = JSON.stringify(res.data)
+               localStorage.setItem("focusData",focusData)
+               console.log(this.data)
+           })
+       },
+        drawFocusChart(){
+            var Global = this.$F2.Global;
+            // Step 1: 创建 Chart 对象
+            const chart = new this.$F2.Chart({
+                id: 'mountNode',
+                pixelRatio: window.devicePixelRatio,
+                width: 375,
+                height: 500,
+                // padding: [ 45, 'auto', 'auto' ]
+            });
+
+            // Step 2: 载入数据源
+            console.log(this.data);
+            chart.source(this.data);
+            chart.coord({
+                transposed: true
+            });
+            chart.axis('gamename', {
+                line: null,
+                grid: null
+            });
+            chart.axis('highscore', {
+                line: null,
+                grid: null,
+                label: function label(text, index, total) {
+                var textCfg = {};
+                if (index === 0) {
+                    textCfg.textAlign = 'left';
+                } else if (index === total - 1) {
+                    textCfg.textAlign = 'right';
+                }
+                return textCfg;
+                }
+            });
+            // Step 3：创建图形语法，绘制柱状图，由 genre 和 sold 两个属性决定图形位置，genre 映射至 x 轴，sold 映射至 y 轴
+            chart.interval().position('gamename*highscore').color('gamename');;
+
+            // Step 4: 渲染图表
+            chart.render();
+        }
    }
        
 }
@@ -59,4 +103,5 @@ export default {
 .mu-item-title{
     width: 40%;
 }
+
 </style>

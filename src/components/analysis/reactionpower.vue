@@ -6,9 +6,14 @@
             </mu-button>
             reaction power
         </mu-appbar>
-        <div class="chart-wrapper">
-            <canvas id="mountNode"></canvas>
-        </div>
+        <mu-container>
+            <mu-list>
+                <mu-sub-header>reaction</mu-sub-header>
+                <div class="chart-wrapper">
+                    <canvas id="mountNode"></canvas>
+                </div>
+            </mu-list>
+        </mu-container> 
     </div>
 </template>
 
@@ -18,40 +23,57 @@ export default {
    data() {
        return {
            phone: localStorage.getItem("phone"),
-           simpleName:[],
-           simpleScore:[],
-           data:JSON.parse(localStorage.getItem("data"))
+           data:JSON.parse(localStorage.getItem("reactionData"))
+        //    data:[
+        //        {
+        //            gamename:'',
+        //            highscore:0
+        //        }
+        //    ]
        }
    },
    mounted(){
+
         this.getScore();
         var v = this;
         this.$nextTick(()=>{
-            v.drawChart();
-        });
+            v.drawReactionChart();
+        },1000);
    },
    methods: {
         getScore() {
-           let apiUrl = this.$store.state.apiUrl+"game/findGamesResult";
+           let apiUrl = this.$store.state.apiUrl+"game/findReactionResult";
            axios({
                method: "post",
                url: apiUrl,
                data:{
-                   phoneNumber: this.phone
+                   phoneNumber: this.phone,
                }
            }).then(res => {
-
-               let data = JSON.stringify(res.data)
-               localStorage.setItem("data",data)
+               console.log(res.data)
+               let reactionData = JSON.stringify(res.data)
+               localStorage.setItem("reactionData",reactionData)
+            //    let reactionData = res.data
+            //    var data = [];
+            //    for(var i=0; i<reactionData.length; i++) {
+            //        var obj = {};
+            //        obj.gamename = reactionData[i].gamename;
+            //        obj.highscore = reactionData[i].highscore;
+            //        data[i] = obj;
+            //    }
+            //    this.data = data
                console.log(this.data)
            })
        },
-        drawChart(){
+        drawReactionChart(){
             var Global = this.$F2.Global;
             // Step 1: 创建 Chart 对象
             const chart = new this.$F2.Chart({
                 id: 'mountNode',
-                pixelRatio: window.devicePixelRatio
+                pixelRatio: window.devicePixelRatio,
+                width: 370,
+                height: 500,
+                // padding: [ 70, 'auto', 'auto' ]
             });
 
             // Step 2: 载入数据源
@@ -60,25 +82,25 @@ export default {
             chart.coord({
                 transposed: true
             });
-            // chart.axis('gamename', {
-            //     line: null,
-            //     grid: null
-            // });
-            // chart.axis('highscore', {
-            //     line: null,
-            //     grid: null,
-            //     label: function label(text, index, total) {
-            //     var textCfg = {};
-            //     if (index === 0) {
-            //         textCfg.textAlign = 'left';
-            //     } else if (index === total - 1) {
-            //         textCfg.textAlign = 'right';
-            //     }
-            //     return textCfg;
-            //     }
-            // });
+            chart.axis('gamename', {
+                line: null,
+                grid: null
+            });
+            chart.axis('highscore', {
+                line: null,
+                grid: null,
+                label: function label(text, index, total) {
+                var textCfg = {};
+                if (index === 0) {
+                    textCfg.textAlign = 'center';
+                } else if (index === total - 1) {
+                    textCfg.textAlign = 'center';
+                }
+                return textCfg;
+                }
+            });
             // Step 3：创建图形语法，绘制柱状图，由 genre 和 sold 两个属性决定图形位置，genre 映射至 x 轴，sold 映射至 y 轴
-            chart.interval().position('gamename*highscore').color('gamename');;
+            chart.interval().position('gamename*highscore').color('gamename')
 
             // Step 4: 渲染图表
             chart.render();
@@ -96,7 +118,7 @@ export default {
     width: 40%;
 }
 
-img {
+/* img {
     vertical-align: middle;
     border-style: none;
 }
@@ -167,6 +189,6 @@ canvas {
         height: 2.3988006vw;
         background-color: #979797;
     }
-}
+} */
 
 </style>

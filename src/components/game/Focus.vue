@@ -7,41 +7,52 @@
             专注力游戏
         </mu-appbar>
         
-        <mu-list>
-            <mu-sub-header>简单</mu-sub-header>
-            <mu-list-item avatar button :ripple="false" to="/jiyifanpai">
+        <mu-list textline="three-line">
+            <mu-list-item avatar button to="/zuiqiangyanli">
                 <mu-list-item-action>
                     <mu-avatar>
-                        <img src="../../assets/logo.png">
+                    <img src="../../assets/img/game/focus/xielunyan.png">
                     </mu-avatar>
                 </mu-list-item-action>
-                <mu-list-item-title>记忆翻牌</mu-list-item-title>
+                <mu-list-item-content>
+                    <mu-list-item-title style="color: black;font-weight:bold">最强眼力</mu-list-item-title>
+                    <mu-list-item-sub-title>
+                    <span style="color: rgba(0, 0, 0, .87)">想拥有写轮眼吗？</span><br/>
+                    <mu-icon color="yellow700" value="star"></mu-icon>
+                    <mu-icon color="yellow700" value="star"></mu-icon>
+                    <mu-icon color="yellow700" value="star"></mu-icon>
+                    <!-- <mu-icon  value="star_border"></mu-icon>
+                    <mu-icon  value="star_border"></mu-icon>
+                    <mu-icon  value="star_border"></mu-icon>
+                    <mu-icon  value="star_border"></mu-icon> -->
+                    </mu-list-item-sub-title>
+                </mu-list-item-content>
             </mu-list-item>
-        </mu-list>
-        <mu-divider></mu-divider>
-        <mu-list>
-            <mu-sub-header>一般</mu-sub-header>
-            <mu-list-item avatar button :ripple="false">
+            <mu-divider></mu-divider>
+            <mu-list-item avatar button to="/wazhongzhaomei">
                 <mu-list-item-action>
                     <mu-avatar>
-                        <img src="../../assets/logo.png">
+                    <img src="../../assets/img/game/focus/mei.jpg">
                     </mu-avatar>
                 </mu-list-item-action>
-                <mu-list-item-title>记忆翻牌</mu-list-item-title>
+                <mu-list-item-content>
+                    <mu-list-item-title style="color: black;font-weight:bold">袜中找妹</mu-list-item-title>
+                    <mu-list-item-sub-title>
+                    <span style="color: rgba(0, 0, 0, .87)">色盲请不要点进来！！！</span><br/>
+                    <mu-icon color="yellow700" value="star"></mu-icon>
+                    <mu-icon color="yellow700" value="star"></mu-icon>
+                    <mu-icon color="yellow700" value="star"></mu-icon>
+                    <!-- <mu-icon  value="star_border"></mu-icon>
+                    <mu-icon  value="star_border"></mu-icon>
+                    <mu-icon  value="star_border"></mu-icon>
+                    <mu-icon  value="star_border"></mu-icon> -->
+                    </mu-list-item-sub-title>
+                </mu-list-item-content>
             </mu-list-item>
         </mu-list>
-        <mu-divider></mu-divider>
-        <mu-list>
-            <mu-sub-header>困难</mu-sub-header>
-            <mu-list-item avatar button :ripple="false">
-                <mu-list-item-action>
-                    <mu-avatar>
-                        <img src="../../assets/logo.png">
-                    </mu-avatar>
-                </mu-list-item-action>
-                <mu-list-item-title>记忆翻牌</mu-list-item-title>
-            </mu-list-item>
-        </mu-list>
+        
+        
+
     </div>
 </template>
 
@@ -51,6 +62,24 @@ export default {
         return {
 
         }
+    },
+    methods:{
+        //游戏使用权限
+        // conPower($event){
+        //     console.log($event.target.innerHTML)
+        //     let text = $event.target.innerHTML
+        //     console.log(this.vipState)
+        //     if(this.vipState == "VIP"){
+        //         if(text == "坠落的小鸟"){
+        //             this.$router.push("/")
+        //             return
+        //         }
+                
+                
+        //     }else{
+        //         this.$Message.error("您还不是VIP用户，请开通VIP")
+        //     }
+        // }
     }
 }
 </script>

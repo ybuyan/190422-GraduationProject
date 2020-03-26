@@ -7,7 +7,7 @@
             我的信息
             <mu-button flat slot="right" @click="changeInfo">信息修改</mu-button>
         </mu-appbar>
-        <mu-container>
+        <mu-container class="wrap_info">
             <mu-form  :model="form" ref="form" class="mu-demo-form form" label-position="top" label-width="100" >
                 <mu-form-item prop="nickname" label="昵称" :rules="nickNameRules">
                     <mu-text-field :disabled="isDisabled" v-model="form.nickname" prop="nickname"></mu-text-field>
@@ -15,8 +15,8 @@
                 <mu-form-item prop="status" label="状态" :rules="statusRules">
                     <mu-select v-model="form.status" :disabled="isDisabled">
                         <mu-option prop="status" 
-                                   v-for="option,index in status_options" 
-                                   :key="option" 
+                                   v-for="(option,index) in status_options" 
+                                   :key="index" 
                                    :label="option" 
                                    :value="option"
                                    >
@@ -35,6 +35,7 @@
                 </mu-form-item>  
                 <mu-form-item>
                     <mu-button id="update_btn" style="margin:0 auto" color="primary" @click="updateUserInfo">保存</mu-button>
+                    <mu-button id="signout" style="margin:0 auto" color="primary" @click="signout">登出</mu-button>
                 </mu-form-item>  
             </mu-form>
         </mu-container>
@@ -77,6 +78,7 @@ export default {
     },
     mounted() {
         $('#update_btn').hide();
+        $('#signout').show();
         var phone = localStorage.getItem('phone'); 
         let apiUrl = this.$store.state.apiUrl+"user/findUserInfo";
         axios({
@@ -97,12 +99,19 @@ export default {
                 this.form.sex = "女"
             }
             this.form.status = Data.status
+
         });
     },
     methods:{
+        signout() {
+            localStorage.removeItem("Flag");
+            this.$router.push("/home/mine/login")
+            // localStorage.clear()
+        },
         changeInfo() {
             this.isDisabled = false;
             $('#update_btn').show();
+            $('#signout').hide();
         },
         updateUserInfo() {
             let apiUrl = this.$store.state.apiUrl+"user/update";
@@ -127,6 +136,8 @@ export default {
                 if(res.data === true) {
                     this.$Message.info('修改成功');
                     this.isDisabled = true;
+                    $('#update_btn').hide();
+                    $('#signout').show();
                 }
             })
 
@@ -161,5 +172,8 @@ export default {
   max-width: 460px;
   margin: 0 auto;
 }
-
+.wrap_info{
+    width:80%;
+    
+}
 </style>

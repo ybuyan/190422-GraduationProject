@@ -8,98 +8,91 @@
         </mu-appbar>
         <mu-container>
             <mu-list>
-                <mu-sub-header>简单</mu-sub-header>
-                <mu-divider></mu-divider>
-                <mu-flex class="demo-linear-progress">
-                    <mu-list-item-title>心算</mu-list-item-title>
-                    <mu-linear-progress mode="determinate" :value="90"  :size="15" color="green"></mu-linear-progress>
-                </mu-flex>
-                <mu-flex class="demo-linear-progress">
-                    <mu-list-item-title>小鸟起飞</mu-list-item-title>
-                    <mu-linear-progress mode="determinate" :value="90"  :size="15" color="green"></mu-linear-progress>
-                </mu-flex>
-                <mu-flex class="demo-linear-progress">
-                    <mu-list-item-title>输个蓝记忆翻牌</mu-list-item-title>
-                    <mu-linear-progress mode="determinate" :value="90"  :size="15" color="green"></mu-linear-progress>
-                </mu-flex>
-                <mu-flex class="demo-linear-progress">
-                    <mu-list-item-title>心算</mu-list-item-title>
-                    <mu-linear-progress mode="determinate" :value="90"  :size="15" color="green"></mu-linear-progress>
-                </mu-flex>
+                <mu-sub-header>calculation</mu-sub-header>
+                <div class="chart-wrapper">
+                    <canvas id="mountNode"></canvas>
+                </div>
             </mu-list>
-            <mu-divider></mu-divider>
-            <mu-list>
-                <mu-sub-header>一般</mu-sub-header>
-                <mu-divider></mu-divider>
-                <mu-flex class="demo-linear-progress">
-                    <mu-list-item-title>心算</mu-list-item-title>
-                    <mu-linear-progress mode="determinate" :value="90"  :size="15" color="green"></mu-linear-progress>
-                </mu-flex>
-                
-            </mu-list>
-            <mu-divider></mu-divider>
-            <mu-list>
-                <mu-sub-header>困难</mu-sub-header>
-                <mu-divider></mu-divider>
-                <mu-flex class="demo-linear-progress">
-                    <mu-list-item-title>心算</mu-list-item-title>
-                    <mu-linear-progress mode="determinate" :value="90"  :size="15" color="green"></mu-linear-progress>
-                </mu-flex>
-                <mu-flex class="demo-linear-progress">
-                    <mu-list-item-title>心算</mu-list-item-title>
-                    <mu-linear-progress mode="determinate" :value="90"  :size="15" color="green"></mu-linear-progress>
-                </mu-flex>
-                <mu-flex class="demo-linear-progress">
-                    <mu-list-item-title>小鸟起飞</mu-list-item-title>
-                    <mu-linear-progress mode="determinate" :value="90"  :size="15" color="green"></mu-linear-progress>
-                </mu-flex>
-                <mu-flex class="demo-linear-progress">
-                    <mu-list-item-title>输个蓝记忆翻牌</mu-list-item-title>
-                    <mu-linear-progress mode="determinate" :value="90"  :size="15" color="green"></mu-linear-progress>
-                </mu-flex>
-                <mu-flex class="demo-linear-progress">
-                    <mu-list-item-title>心算</mu-list-item-title>
-                    <mu-linear-progress mode="determinate" :value="90"  :size="15" color="green"></mu-linear-progress>
-                </mu-flex>
-                <mu-flex class="demo-linear-progress">
-                    <mu-list-item-title>输个蓝记忆翻牌</mu-list-item-title>
-                    <mu-linear-progress mode="determinate" :value="90"  :size="15" color="green"></mu-linear-progress>
-                </mu-flex>
-                <mu-flex class="demo-linear-progress">
-                    <mu-list-item-title>心算</mu-list-item-title>
-                    <mu-linear-progress mode="determinate" :value="90"  :size="15" color="green"></mu-linear-progress>
-                </mu-flex>
-                <mu-flex class="demo-linear-progress">
-                    <mu-list-item-title>输个蓝记忆翻牌</mu-list-item-title>
-                    <mu-linear-progress mode="determinate" :value="90"  :size="15" color="green"></mu-linear-progress>
-                </mu-flex>
-                <mu-flex class="demo-linear-progress">
-                    <mu-list-item-title>心算</mu-list-item-title>
-                    <mu-linear-progress mode="determinate" :value="90"  :size="15" color="green"></mu-linear-progress>
-                </mu-flex>
-                <mu-flex class="demo-linear-progress">
-                    <mu-list-item-title>输个蓝记忆翻牌</mu-list-item-title>
-                    <mu-linear-progress mode="determinate" :value="90"  :size="15" color="green"></mu-linear-progress>
-                </mu-flex>
-                <mu-flex class="demo-linear-progress">
-                    <mu-list-item-title>心算</mu-list-item-title>
-                    <mu-linear-progress mode="determinate" :value="90"  :size="15" color="green"></mu-linear-progress>
-                </mu-flex>
-
-            </mu-list>
-        </mu-container>    
+        </mu-container> 
     </div>
 </template>
 
 <script>
+
 export default {
    data() {
        return {
-
+           phone: localStorage.getItem("phone"),
+           data:JSON.parse(localStorage.getItem("calculationData")),
        }
    },
-   components:{
-   
+
+   mounted(){
+        this.getScore();
+        var v = this;
+        this.$nextTick(()=>{
+            v.drawCalculationChart();
+        });
+
+        
+   },
+   methods: {
+        getScore() {
+           let apiUrl = this.$store.state.apiUrl+"game/findCalculationResult";
+           axios({
+               method: "post",
+               url: apiUrl,
+               data:{
+                   phoneNumber: this.phone,
+                   
+               }
+           }).then(res => {
+
+               let calculationData = JSON.stringify(res.data)
+               localStorage.setItem("calculationData",calculationData)
+               console.log(this.data)
+           })
+       },
+        drawCalculationChart(){
+            var Global = this.$F2.Global;
+            // Step 1: 创建 Chart 对象
+            const chart = new this.$F2.Chart({
+                id: 'mountNode',
+                pixelRatio: window.devicePixelRatio,
+                width: 375,
+                height: 500,
+                // padding: [ 45, 'auto', 'auto' ]
+            });
+
+            // Step 2: 载入数据源
+            console.log(this.data);
+            chart.source(this.data);
+            chart.coord({
+                transposed: true
+            });
+            chart.axis('gamename', {
+                line: null,
+                grid: null
+            });
+            chart.axis('highscore', {
+                line: null,
+                grid: null,
+                label: function label(text, index, total) {
+                var textCfg = {};
+                if (index === 0) {
+                    textCfg.textAlign = 'left';
+                } else if (index === total - 1) {
+                    textCfg.textAlign = 'right';
+                }
+                return textCfg;
+                }
+            });
+            // Step 3：创建图形语法，绘制柱状图，由 genre 和 sold 两个属性决定图形位置，genre 映射至 x 轴，sold 映射至 y 轴
+            chart.interval().position('gamename*highscore').color('gamename');;
+
+            // Step 4: 渲染图表
+            chart.render();
+        }
    }
        
 }
@@ -112,4 +105,5 @@ export default {
 .mu-item-title{
     width: 40%;
 }
+
 </style>

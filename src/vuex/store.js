@@ -5,7 +5,7 @@ Vue.use(Vuex);
 
 
 const state = {
-    apiUrl: "http://yqwyh.free.idcfengye.com/" ,
+    apiUrl: "http://yqwyh.free.idcfengye.com/" ,//http://yqwyh.free.idcfengye.com/
     isLogin: false,
 };
 // 获取属性的状态

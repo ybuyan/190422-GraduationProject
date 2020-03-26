@@ -1,4 +1,4 @@
-// Please excuse the mess, I need to do some tidying
+
 
 var activeScreen = document.querySelector('.screen.is-active');
 var menuScreen = document.querySelector('.screen.menu');
